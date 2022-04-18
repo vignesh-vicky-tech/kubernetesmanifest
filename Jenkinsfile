@@ -11,10 +11,6 @@ node {
             script {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                        //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
-                        sh "git config user.email vigneshs1711@gmail.com"
-                        sh "git config user.name vignesh-vicky-tech"
-                        //sh "git switch master"
                         sh "cat deployment.yaml"
                         sh "sed -i 's+vigneshvicky12345/test.*+vigneshvicky12345/test:${DOCKERTAG}+g' deployment.yaml"
                         sh "cat deployment.yaml"

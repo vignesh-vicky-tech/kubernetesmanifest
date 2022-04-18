@@ -10,7 +10,7 @@ node {
     stage('Update GIT') {
             script {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    withCredentials([usernamePassword(credentialsId: 'git-hub', passwordVariable: 'vicky@1234567890', usernameVariable: 'vignesh-vicky-tech')]) {
+                    withCredentials([usernamePassword(credentialsId: 'git-hub', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh "git config user.email vigneshs1711@gmail.com"
                         sh "git config user.name vignesh-vicky-tech"
                         sh "cat deployment.yaml"
